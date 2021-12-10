@@ -1,0 +1,33 @@
+body{
+    background-color: rgb(160, 206, 247);
+}
+
+
+.div-gameboard{
+    display: grid;
+    grid-template-areas:
+      'div1 div2 div3'
+      'div4 div5 div6'
+      'div7 div8 div9';
+}
+
+.div-gameboard > *{
+    height: 2rem;
+    width: 10rem;
+    background-color:burlywood;
+    border: 0.2rem solid black;
+    text-align: center;
+    padding: 0.5rem;
+
+}
+
+.div-board-1{ grid-area: div1}
+.div-board-2{ grid-area: div2}
+.div-board-3{ grid-area: div3}
+.div-board-4{ grid-area: div4}
+.div-board-5{ grid-area: div5}
+.div-board-6{ grid-area: div6}
+.div-board-7{ grid-area: div7}
+.div-board-8{ grid-area: div8}
+.div-board-9{ grid-area: div9}
+
