@@ -5,6 +5,7 @@ body{
 
 .div-gameboard{
     display: grid;
+    justify-content: center;
     grid-template-areas:
       'div1 div2 div3'
       'div4 div5 div6'
@@ -13,11 +14,12 @@ body{
 
 .div-gameboard > *{
     height: 2rem;
-    width: 10rem;
+    width: 15rem;
     background-color:burlywood;
     border: 0.2rem solid black;
     text-align: center;
     padding: 0.5rem;
+    justify-self: strech;
 
 }
 
