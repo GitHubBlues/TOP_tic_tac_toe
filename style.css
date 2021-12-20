@@ -1,29 +1,161 @@
 body{
-    background-color: rgb(160, 206, 247);
+    background-color: rgb(255,255,255);
+    margin: 0;
+    padding: 0;
 }
 
+/* First splash page*/
+.spl1-title{
+   text-align: center;
+   background-color: rgb(240, 240, 240);
+   padding: 2.5rem;
+   margin: 0rem 0rem 2rem 0rem;
+   font-weight: 900; 
+   font-size: 250%;
+}
+
+.spl1-container{
+    display: flex;
+    justify-content: center;
+    border: 2px solid orange;
+}
+
+.spl1-message,
+.spl1-player,
+.spl1-bot{
+   display: flex; 
+   justify-content: center;
+   text-align: center;
+   font-size: large;
+   align-self: center; 
+   border: 2px solid magenta;
+}
+
+.spl1-message{
+    font-size: xx-large;
+}
+
+.img-girl-spl1,
+.img-robot-spl1{
+    /* border: 2px solid rgb(0,192,252); */
+    margin: 0rem auto;  
+    overflow: visible;
+}
+
+
+.non-selected-avatar{
+    opacity: 0.40;
+    overflow: visible;
+}
+
+.selected-avatar{
+    border: 5px solid rgb(0, 192, 252);
+    opacity: 1;
+    overflow: visible;
+    
+}
+
+.selected-avatar-red{
+    border: 5px solid rgb(252, 64,64);
+    opacity: 1;
+    overflow: visible;
+}
+
+
+
+.figure1-spl1,
+.figure2-spl1{
+    /* margin: 3rem 0rem; */
+    /* display: flex;
+    justify-content: center; */
+    border: 2px solid blueviolet;
+    text-align: center;
+}
+
+figcaption{
+    font-size: xx-large; 
+    text-align: center;
+}
+
+.button-next-1{
+    display: flex;
+    margin: 2rem auto;
+    font-size: xx-large;
+    padding: 0.5rem;
+}
+
+.button-next-2{
+    display: block;
+    margin: 2rem auto;
+    font-size: xx-large;
+    padding: 0.5rem;
+}
+
+.spl2-avatar-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.choose-avatar-text{
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+}
+
+.avatars{
+    display: flex;
+    justify-content: center;  
+    overflow: visible;  
+}
+
+.get-name-message{
+    margin: 2.5rem auto 1.5rem auto;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.input-box{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    font-size: xx-large;
+}
 
 .div-gameboard{
     display: grid;
     justify-content: center;
+    align-content: center;
     grid-template-areas:
       'div1 div2 div3'
       'div4 div5 div6'
       'div7 div8 div9';
+    gap: 0;   
+    align-items: stretch;
+    justify-items: stretch;
+
+
 }
 
 .div-gameboard > *{
-    height: 2rem;
-    width: 15rem;
-    background-color:burlywood;
+    height: 3rem;
+    width: 12rem;
+    background-color: "white";
     border: 0.2rem solid black;
     text-align: center;
     padding: 0.5rem;
-    justify-self: strech;
-
+    font-size: xx-large;
+    font-weight: 600;
+    margin: auto;
+    text-shadow: 0.3rem 0.3rem 0.2rem rgb(221, 220, 220);
+    
+    
 }
 
-.div-board-1{ grid-area: div1}
+.div-board-1{ 
+    grid-area: div1;
+    text-shadow: 0.3rem 0.3rem 0.2rem lightgrey;
+    
+}
 .div-board-2{ grid-area: div2}
 .div-board-3{ grid-area: div3}
 .div-board-4{ grid-area: div4}
@@ -33,3 +165,57 @@ body{
 .div-board-8{ grid-area: div8}
 .div-board-9{ grid-area: div9}
 
+.main-container{
+    display: flex;
+    justify-content: center;
+
+}
+
+.announce-winner{
+    font-family: 'Fuzzy Bubbles', cursive;
+    font-size: 5rem;
+    color:rgb(252, 64,64);
+    transform: rotate(355deg);
+    display: flex;
+    margin-top: -3rem;
+    text-align: center;
+}
+
+.button-play-again{
+    width: 30rem;
+    font-size: xx-large;
+    color: "black";
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid black;
+    padding: 0.2rem;
+    margin: 4rem auto;
+    background:lightgrey;
+}
+
+.tie-image-1,
+.tie-image-2{
+    display: flex;
+    width: 4rem;
+    height: auto;
+}
+
+.tie-image-1{
+    margin-top: -4rem;
+    margin-right: 3rem;
+    transform: rotate(356deg);  
+    }
+
+.tie-image-2{
+    margin-top: -3rem;
+    margin-left: 3rem;
+    transform: rotate(2deg);  
+}
+
+
+.winner-area{
+    display:flex;
+    justify-content: center;
+    margin-top:0.5rem
+}

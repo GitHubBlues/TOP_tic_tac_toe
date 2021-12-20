@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   id="svg2"
+   sodipodi:docname="necktie_red.svg"
+   viewBox="0 0 199.2 600"
+   version="1.1"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs934">
+    <linearGradient
+       id="linearGradient1100"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop1098" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient1094"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#fc4040;stop-opacity:1;"
+         offset="0"
+         id="stop1092" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1094"
+       id="linearGradient1096"
+       x1="1.020985"
+       y1="299.95256"
+       x2="198.83799"
+       y2="299.95256"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1100"
+       id="linearGradient1102"
+       x1="1.020985"
+       y1="299.95256"
+       x2="198.83799"
+       y2="299.95256"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <title
+     id="title2814">Necktie</title>
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="-9"
+     pagecolor="#ffffff"
+     inkscape:window-height="1001"
+     inkscape:window-maximized="1"
+     inkscape:zoom="0.98994949"
+     inkscape:window-x="-9"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="368.2006"
+     inkscape:cy="308.6016"
+     inkscape:window-width="1920"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="px"
+     inkscape:pagecheckerboard="0" />
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(-6.809 -593.56)">
+    <path
+       id="path2830"
+       style="fill:#000000"
+       d="m59.156 1157.2c-16.16-18.5-56.045-26-52.07-53.7 3.68-67.2 10.286-134.09 15.966-201.01 4.671-47.94 7.827-96.33 18.388-143.46 4.201-23.03 35.613-51.2 19.6-70.16-11.686-21.57-21.87-43.86-38.103-62.51-15.527-20.08 16.533-32.85 32.837-30.8 22.872 0.27257 46.032-3.2704 69.237-1.5065 16.626 3.449 55.725-7.805 54.584 16.401-10.043 27.991-30.973 50.916-40.13 79.204-3.8394 25.354 23.337 41.61 26.076 66.515 7.7497 52.454 14.003 105.35 18.993 158.26 5.7956 33.526 5.0707 67.834 11.492 101.11 2.6974 33.227 7.2362 66.266 9.9864 99.494-19.548 19.256-41.781 35.121-61.473 54.159-16.318 10.787-31.315 38.897-48.667 14.991-12.258-9-24.475-18-36.718-27z" />
+    <path
+       style="fill:url(#linearGradient1096);stroke-width:4.53543307;fill-opacity:1;stroke:url(#linearGradient1102);stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 95.105901,595.98367 c -2.305695,-1.67024 -4.192172,-3.44251 -4.192172,-3.93838 0,-0.49588 -8.279485,-6.97063 -18.398856,-14.38834 C 62.395504,570.23924 51.49177,561.88506 48.284355,559.09212 45.07694,556.29918 36.504686,550.38979 29.234902,545.96014 5.9730156,531.78613 1.0016586,525.71973 1.0210414,511.53162 1.042601,495.75014 4.7117501,447.30559 13.67475,344.46202 22.318813,245.27801 26.124034,211.7126 32.412913,179.17485 c 3.679045,-19.03484 4.758917,-22.00259 14.441396,-39.68844 4.15494,-7.58935 8.541897,-16.28175 9.748793,-19.31645 2.718413,-6.83537 3.102728,-16.40974 0.82969,-20.669934 C 37.337928,61.837651 29.547248,48.735371 19.987101,36.524282 11.336465,25.474904 10.572999,20.737398 16.319503,13.765892 19.971873,9.3349359 29.733134,4.5486409 37.880721,3.1936576 42.573262,2.4132651 94.476108,0.47395054 102.02541,0.796935 c 0.83337,0.0356544 14.01586,0.2514878 29.29442,0.4796292 23.26688,0.3474241 28.42953,0.6939028 31.78283,2.1330261 5.53196,2.3741224 7.44763,4.3462116 8.68475,8.9405527 0.99852,3.708219 0.72896,4.642998 -4.43672,15.385687 -3.02491,6.290679 -9.35656,17.965267 -14.07033,25.943532 -15.97113,27.03179 -21.16019,38.797104 -21.12646,47.900538 0.0323,8.73073 2.87313,15.77778 12.80299,31.76024 4.7727,7.68183 9.59471,16.57621 10.71559,19.76528 3.0652,8.72107 11.33769,70.36615 18.56238,138.32359 1.94915,18.33427 4.19648,38.33529 4.99406,44.44671 0.79759,6.11143 2.4123,22.4759 3.58824,36.36549 1.17593,13.8896 2.79761,29.57222 3.60372,34.85027 0.80612,5.27804 2.85032,22.77894 4.54268,38.89087 1.69236,16.11193 4.15644,39.52222 5.47572,52.02286 l 2.39871,22.72843 -5.75402,5.55584 c -3.16471,3.05571 -13.2424,11.89151 -22.39487,19.63513 -18.77277,15.88305 -34.54428,29.65965 -47.29872,41.31599 -13.83908,12.64758 -20.18608,14.60952 -28.284479,8.74307 z"
+       id="path1053"
+       transform="translate(6.809,593.56)" />
+  </g>
+  <metadata
+     id="metadata931">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Necktie</dc:title>
+        <dc:date>2010-05-29T02:21:34</dc:date>
+        <dc:description>A necktie. Remix of necktie by prapanj on openclipart.org</dc:description>
+        <dc:source>https://openclipart.org/detail/63547/necktie-by-mazeo</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>mazeo</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>necktie</rdf:li>
+            <rdf:li>neckwear</rdf:li>
+            <rdf:li>remix</rdf:li>
+            <rdf:li>silhouette</rdf:li>
+            <rdf:li>tie</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

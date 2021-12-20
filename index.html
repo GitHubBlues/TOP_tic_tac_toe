@@ -4,26 +4,86 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&display=swap" rel="stylesheet"> ">
     <link rel="stylesheet" href="style.css">
     <script src='script.js' defer></script>
     <title>Document</title>
 </head>
 
 <body>
-
-    <div class="title">TITLE</div>
-    <div class="div-gameboard">
-        <div class="div-board-1">1</div>
-        <div class="div-board-2">2</div>
-        <div class="div-board-3">3</div>
-        <div class="div-board-4">4</div>
-        <div class="div-board-5">5</div>
-        <div class="div-board-6">6</div>
-        <div class="div-board-7">7</div>
-        <div class="div-board-8">8</div>
-        <div class="div-board-9">9</div>
+    
+    <div class="splash-page-1">
+        <h1 class="spl1-title">tic-tac-toe</h1> 
+        <div class="spl1-container"> 
+            <div class="spl1-message">Choose your opponent</div> 
+            <div class="spl1-opponents"> 
+                <figure class="figure1-spl1">
+                    <img class= "img-girl-spl1" src="images/Avatar_girl_1_red.svg" alt="Human avatar"/>
+                    <figcaption>A fellow human</figcaption>
+                    <!-- <div class="spl1-player">a fellow human</div>    -->
+                </figure>
+                <figure class="figure2-spl1">
+                    <img class= "img-robot-spl1" src="images/Avatar_robot.svg" alt="Robot avatar"/>  
+                    <figcaption>The invincible bot</figcaption>
+                    <!-- <div class="spl1-bot">the invincible bot</div>    -->
+                </figure>
+            </div>    
+        </div> 
+        <button class="button-next-1" type="button">Next --></button>   
     </div>
+
+
+    <div class="splash-page-2" style="display:none">
+        <h1 class="spl1-title">tic-tac-toe</h1> 
+ 
+        <div class="spl2-avatar-container"> 
+            <div class="choose-avatar-text">Choose your avatar</div> 
+            <div class="avatars">
+                <img class= "img-girl-1-spl2" src="images/Avatar_girl_1_blue.svg" alt="Girl avatar"/>
+                <img class= "img-boy-2-spl2" src="images/Avatar_boy_2_blue.svg" alt="Boy avatar"/>
+                <img class= "img-boy-1-spl2" src="images/Avatar_boy_1_blue.svg" alt="Boy avatar"/>
+                <img class= "img-girl-2-spl2" src="images/Avatar_girl_2_blue.svg" alt="Girl avatar"/>
+            </div>
+        </div> 
+        <div class="get-name-message">Input your name</div>
+        <input class="input-box" type="text" placeholder="player 1">
+        <button class="button-next-2" type="button">Next --></button>   
+     </div>
+
+
+    <div class="main-page" style="display:none">
+        <h1 class="spl1-title">tic-tac-toe</h1> 
+        <div class="main-container">
+            <figure class="left-avatar-gameboard"> 
+            <img id="left-avatar" src="images/Avatar_girl_1_blue.svg" alt="Avatar player 1"/>
+            <figcaption id="caption-left-avatar">Player 1</figcaption> 
+            </figure>    
+            <div class="div-gameboard">
+                <div class="div-board-1">1</div>
+                <div class="div-board-2">2</div>
+                <div class="div-board-3">3</div>
+                <div class="div-board-4">4</div>
+                <div class="div-board-5">5</div>
+                <div class="div-board-6">6</div>
+                <div class="div-board-7">7</div>
+                <div class="div-board-8">8</div>
+                <div class="div-board-9">9</div>
+            </div>
+            <figure class="right-avatar-gameboard"> 
+                <img id="right-avatar" src="images/Avatar_girl_1_red.svg" alt="Avatar player 2"/>
+                <figcaption id="caption-right-avatar">Player 2</figcaption> 
+            </figure> 
+        </div>
+    </div>
+    
+    <div class="winner-area">
+        <img class="tie-image-1" src="images/necktie_red.svg" alt="necktie" style="display:none"/>
+        <div class="announce-winner" style="display:none"></div>
+        <img class="tie-image-2" src="images/necktie_blue.svg" alt="necktie" style="display:none"/>
+    </div>    
+    <div class="button-play-again" style="display:none">Click here for new game</div>
 
 </body>
 
 </html>
+

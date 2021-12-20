@@ -1,3 +1,221 @@
+// First splash page
+const splSecreen1 = document.querySelector(".splash-page-1");
+const splSecreen2 = document.querySelector(".splash-page-2");
+const mainScreen = document.querySelector(".main-page");
+const spl1Figure1 = document.querySelector(".img-girl-spl1");
+const spl1Figure2 = document.querySelector(".img-robot-spl1");
+const spl1NextButton = document.querySelector(".button-next-1");
+const spl2Avatar1 = document.querySelector(".img-girl-1-spl2");
+const spl2Avatar2 = document.querySelector(".img-boy-2-spl2");
+const spl2Avatar3 = document.querySelector(".img-boy-1-spl2");
+const spl2Avatar4 = document.querySelector(".img-girl-2-spl2");
+const spl2NextButton = document.querySelector(".button-next-2");
+const winBanner = document.querySelector(".announce-winner");
+const playAgainButton = document.querySelector(".button-play-again");
+const tieImage1 = document.querySelector(".tie-image-1");
+const tieImage2 = document.querySelector(".tie-image-2");
+
+let opponent;
+let backup="";
+let namePlayer1;
+let namePlayer2;
+let avatarPlayer1;
+let avatarPlayer2;
+
+
+/* First splash screen */
+function spl1NextHandler(){
+    splSecreen1.style.display = "none";
+    splSecreen2.style.display = "block";
+    
+    spl2Avatar1.addEventListener('click', selectAvatarHandler);
+    spl2Avatar2.addEventListener('click', selectAvatarHandler);
+    spl2Avatar3.addEventListener('click', selectAvatarHandler);
+    spl2Avatar4.addEventListener('click', selectAvatarHandler);
+}    
+
+function selectAvatarHandler(evt){
+    spl2Avatar1.classList.remove("selected-avatar");
+    spl2Avatar2.classList.remove("selected-avatar");
+    spl2Avatar3.classList.remove("selected-avatar");
+    spl2Avatar4.classList.remove("selected-avatar");
+
+    spl2Avatar1.classList.remove("selected-avatar-red");
+    spl2Avatar2.classList.remove("selected-avatar-red");
+    spl2Avatar3.classList.remove("selected-avatar-red");
+    spl2Avatar4.classList.remove("selected-avatar-red");
+
+    spl2Avatar1.classList.add("non-selected-avatar");
+    spl2Avatar2.classList.add("non-selected-avatar");
+    spl2Avatar3.classList.add("non-selected-avatar");
+    spl2Avatar4.classList.add("non-selected-avatar");
+    
+    console.log(evt.target);
+    if (evt.target.classList.contains("img-girl-1-spl2")){
+        avatarPlayer1= "girl_1";
+
+        spl2Avatar1.classList.remove("non-selected-avatar");
+        
+        if (backup == ""){
+            spl2Avatar1.classList.add("selected-avatar");
+        } else {
+            spl2Avatar1.classList.add("selected-avatar-red");
+        }
+
+    } else if (evt.target.classList.contains("img-boy-2-spl2")){
+        avatarPlayer1= "boy_2";
+
+        spl2Avatar2.classList.remove("non-selected-avatar");
+
+        if (backup == ""){
+            spl2Avatar2.classList.add("selected-avatar");
+        } else {
+            spl2Avatar2.classList.add("selected-avatar-red");
+        }
+
+    } else if (evt.target.classList.contains("img-boy-1-spl2")){
+        avatarPlayer1= "boy_1";
+
+        spl2Avatar3.classList.add("selected-avatar");
+
+        if (backup == ""){
+            spl2Avatar3.classList.add("selected-avatar");
+        } else {
+            spl2Avatar3.classList.add("selected-avatar-red");
+        }
+
+    } else if (evt.target.classList.contains("img-girl-2-spl2")){
+        avatarPlayer1= "girl_2";  
+
+        spl2Avatar4.classList.add("selected-avatar");
+
+        if (backup == ""){
+            spl2Avatar4.classList.add("selected-avatar");
+        } else {
+            spl2Avatar4.classList.add("selected-avatar-red");
+        }
+    } 
+    
+    spl2NextButton.addEventListener('click', spl2NextHandler);
+}
+
+
+/* Second splash screen */
+function spl2NextHandler(){
+
+    if (backup == ""){
+
+        namePlayer1 = document.querySelector(".input-box").value;
+        if (namePlayer1 === ""){
+            namePlayer1 = "Player 1"; 
+        }
+        document.querySelector(".input-box").value = "";
+        
+
+        if (opponent == "notAI"){
+        backup = avatarPlayer1;
+        
+        spl2NextButton.removeEventListener('click', spl2NextHandler);
+        
+        spl2Avatar1.src = "images/Avatar_girl_1_red.svg";
+        spl2Avatar2.src = "images/Avatar_boy_2_red.svg";
+        spl2Avatar3.src = "images/Avatar_boy_1_red.svg";
+        spl2Avatar4.src = "images/Avatar_girl_2_red.svg";
+
+        document.querySelector(".choose-avatar-text").innerHTML = "Player 2: Choose your avatar";
+        
+        spl2Avatar1.classList.remove("non-selected-avatar");
+        spl2Avatar2.classList.remove("non-selected-avatar");
+        spl2Avatar3.classList.remove("non-selected-avatar");
+        spl2Avatar4.classList.remove("non-selected-avatar");
+        spl2Avatar1.classList.remove("selected-avatar");
+        spl2Avatar2.classList.remove("selected-avatar");
+        spl2Avatar3.classList.remove("selected-avatar");
+        spl2Avatar4.classList.remove("selected-avatar");
+
+        spl1NextHandler()
+
+        } else if (opponent == "AI"){
+            let namePlayer2 = "Robot";
+            splSecreen2.style.display = "none";
+            mainScreen.style.display = "block"; 
+
+            personalizePlayers(namePlayer1, namePlayer2, avatarPlayer1, "Robot");
+        }
+
+    } else {
+        
+        namePlayer2 = document.querySelector(".input-box").value;
+        if (namePlayer2 === ""){
+            namePlayer2 = "Player 2"; 
+        }
+        
+        document.querySelector(".input-box").value = "";
+
+        avatarPlayer2= avatarPlayer1;
+        avatarPlayer1 = backup;
+       
+        personalizePlayers(namePlayer1, namePlayer2, avatarPlayer1, avatarPlayer2);
+
+        splSecreen2.style.display = "none";
+        mainScreen.style.display = "block"; 
+    }
+}
+
+function personalizePlayers(namePlayer1, namePlayer2, avatarPlayer1, avatarPlayer2){
+    
+    if (avatarPlayer1=="girl_1"){
+        document.getElementById("left-avatar").src = "images/Avatar_girl_1_blue.svg";
+    } else if (avatarPlayer1=="girl_2"){
+        document.getElementById("left-avatar").src = "images/Avatar_girl_2_blue.svg";
+    } else if (avatarPlayer1=="boy_1"){
+        document.getElementById("left-avatar").src = "images/Avatar_boy_1_blue.svg"; 
+    } else if (avatarPlayer1=="boy_2"){
+        document.getElementById("left-avatar").src = "images/Avatar_boy_2_blue.svg"; 
+    }   
+
+    if (avatarPlayer2=="girl_1"){
+        document.getElementById("right-avatar").src = "images/Avatar_girl_1_red.svg";
+    } else if (avatarPlayer2=="girl_2"){
+        document.getElementById("right-avatar").src = "images/Avatar_girl_2_red.svg";
+    } else if (avatarPlayer2=="boy_1"){
+        document.getElementById("right-avatar").src = "images/Avatar_boy_1_red.svg"; 
+    } else if (avatarPlayer2=="boy_2"){
+        document.getElementById("right-avatar").src = "images/Avatar_boy_2_red.svg"; 
+    } else {
+        document.getElementById("right-avatar").src = "images/Avatar_robot.svg";  
+    }  
+
+    document.getElementById("caption-left-avatar").innerHTML = namePlayer1;
+    document.getElementById("caption-right-avatar").innerHTML = namePlayer2;
+
+
+}
+
+function spl1SelectAvatar(evt){
+    if (evt.target.classList == "img-girl-spl1"){
+        opponent = "notAI";
+
+        spl1Figure1.classList.add("selected-avatar");
+        spl1Figure2.classList.remove("selected-avatar");
+        spl1NextButton.addEventListener('click', spl1NextHandler);
+
+    }else if (evt.target.classList == "img-robot-spl1"){
+        opponent = "AI";
+        
+        spl1Figure2.classList.add("selected-avatar");
+        spl1Figure1.classList.remove("selected-avatar");
+        spl1NextButton.addEventListener('click', spl1NextHandler);
+
+    } 
+} 
+
+spl1Figure1.addEventListener('click', spl1SelectAvatar);
+spl1Figure2.addEventListener('click', spl1SelectAvatar);
+
+
+
+
 const gameboard = (function () {
     const boarddiv = document.querySelectorAll(".div-gameboard > *");
     
@@ -9,16 +227,14 @@ const gameboard = (function () {
         
         if (opponent == 'AI'){
             if (turn==player2){
-
                 turn = player1;
-                console.log("do I get to this fucking point?");
+
             } else {
                   
                 for (i=0; i<boarddiv.length; i++){
                     boarddiv[i].removeEventListener('click', putMarkerOnBoard)
                 }
                 
-                console.log("do I get to this point?");
                 const aiMove =  minimax(player2, boardArray1D,0);
                 console.log(aiMove);
                 
@@ -31,11 +247,6 @@ const gameboard = (function () {
                 boardArray1D[aiMove.id] = player2.marker;
                 gb.drawBoard(boardArray1D);
                 
-                winner = evaluateWinner(turn);        
-                if (winner >= 0){ 
-                    congratulate();
-                }   
-
                 turn = player1; 
             }
 
@@ -45,100 +256,248 @@ const gameboard = (function () {
             } else {
                 turn = player1;
             }
-            console.log("Here?");
         }
-
-        console.log(turn);
     }
 
 
     const putMarkerOnBoard = function(e){
         turn == player1? marker=player1.marker : marker=player2.marker;
         let winner = -1;
-        
-        console.log('test1');
+        winBanner.style.display = "none";
+
         if (e.target.className == 'div-board-1') {
             if (boardArray1D[0] ==' ') {
                 boardArray1D.splice(0, 1, marker);
                 gb.drawBoard(boardArray1D);
+                winner = evaluateWinner(turn); 
                 currentPlayer();
                 }; 
         } else if (e.target.className == 'div-board-2') {
             if (boardArray1D[1] ==' ') {
                 boardArray1D.splice(1, 1, marker);
                 gb.drawBoard(boardArray1D);
+                winner = evaluateWinner(turn); 
                 currentPlayer();
                 }; 
         } else if (e.target.className == 'div-board-3') {        
             if (boardArray1D[2] ==' ') {
                 boardArray1D.splice(2, 1, marker);
                 gb.drawBoard(boardArray1D);
+                winner = evaluateWinner(turn); 
                 currentPlayer();
                 }; 
         } else if (e.target.className == 'div-board-4') {      
             if (boardArray1D[3] ==' ') {
                 boardArray1D.splice(3, 1, marker);
                 gb.drawBoard(boardArray1D);
+                winner = evaluateWinner(turn); 
                 currentPlayer();
                 }; 
         } else if (e.target.className == 'div-board-5') {  
             if (boardArray1D[4] ==' ') {
                 boardArray1D.splice(4, 1, marker);
                 gb.drawBoard(boardArray1D);
+                winner = evaluateWinner(turn); 
                 currentPlayer();
                 }; 
         } else if (e.target.className == 'div-board-6') {            
             if (boardArray1D[5] ==' ') {
                 boardArray1D.splice(5, 1, marker);
                 gb.drawBoard(boardArray1D);
+                winner = evaluateWinner(turn); 
                 currentPlayer();
                 }; 
         } else if (e.target.className == 'div-board-7') {  
             if (boardArray1D[6] ==' ') {
                 boardArray1D.splice(6, 1, marker);
                 gb.drawBoard(boardArray1D);
+                winner = evaluateWinner(turn); 
                 currentPlayer();
                 }; 
         } else if (e.target.className == 'div-board-8') {
             if (boardArray1D[7] ==' ') {
                 boardArray1D.splice(7, 1, marker);
                 gb.drawBoard(boardArray1D);
+                winner = evaluateWinner(turn); 
                 currentPlayer();
                 }; 
         } else if (e.target.className == 'div-board-9') {         
             if (boardArray1D[8] ==' ') {
                 boardArray1D.splice(8, 1, marker);
                 gb.drawBoard(boardArray1D);
+                winner = evaluateWinner(turn); 
                 currentPlayer();
                 };  
         }
         
-        winner = evaluateWinner(turn);        
+        let won;
+
         if (winner >= 0){ 
-            congratulate();
+
+            winBanner.style.display = "block";
+            playAgainButton.style.display = "block";
+            
+
+            if (turn == player1){
+                won = document.getElementById("caption-right-avatar").innerHTML;
+                winBanner.style.color = "rgb(252,64,64)";
+            } else {
+                won = document.getElementById("caption-left-avatar").innerHTML;
+                winBanner.style.color = "rgb(0, 192, 252)";
+            }
+            winBanner.innerHTML = `There's a winner! <br> ${won} won`; 
+
+
+            for (i=0; i<boarddiv.length; i++){
+                boarddiv[i].removeEventListener('click', putMarkerOnBoard) 
+            }
+            
+            const div1 = document.querySelector(".div-board-1");
+            const div2 = document.querySelector(".div-board-2");
+            const div3 = document.querySelector(".div-board-3");
+            const div4 = document.querySelector(".div-board-4");
+            const div5 = document.querySelector(".div-board-5");
+            const div6 = document.querySelector(".div-board-6");
+            const div7 = document.querySelector(".div-board-7");
+            const div8 = document.querySelector(".div-board-8");
+            const div9 = document.querySelector(".div-board-9");
+
+            if (winner == 0){
+               (turn == player1) ? div1.style.background = "rgba(252,64,64,0.1)" : div1.style.background = "rgba(0, 192, 252, 0.1)"; 
+               (turn == player1) ? div2.style.background = "rgba(252,64,64,0.1)" : div2.style.background = "rgba(0, 192, 252, 0.1)"; 
+               (turn == player1) ? div3.style.background = "rgba(252,64,64,0.1)" : div3.style.background = "rgba(0, 192, 252, 0.1)"; 
+            } else if (winner == 1){
+                (turn == player1) ? div4.style.background = "rgba(252,64,64,0.1)" : div4.style.background = "rgba(0, 192, 252, 0.1)"; 
+                (turn == player1) ? div5.style.background = "rgba(252,64,64,0.1)" : div5.style.background = "rgba(0, 192, 252, 0.1)"; 
+                (turn == player1) ? div6.style.background = "rgba(252,64,64,0.1)" : div6.style.background = "rgba(0, 192, 252, 0.1)"; 
+            } else if (winner == 2){    
+                (turn == player1) ? div7.style.background = "rgba(252,64,64,0.1)" : div7.style.background = "rgba(0, 192, 252, 0.1)"; 
+                (turn == player1) ? div8.style.background = "rgba(252,64,64,0.1)" : div8.style.background = "rgba(0, 192, 252, 0.1)"; 
+                (turn == player1) ? div9.style.background = "rgba(252,64,64,0.1)" : div9.style.background = "rgba(0, 192, 252, 0.1)"; 
+            } else if (winner == 3){        
+                (turn == player1) ? div1.style.background = "rgba(252,64,64,0.1)" : div1.style.background = "rgba(0, 192, 252, 0.1)"; 
+                (turn == player1) ? div4.style.background = "rgba(252,64,64,0.1)" : div4.style.background = "rgba(0, 192, 252, 0.1)"; 
+                (turn == player1) ? div7.style.background = "rgba(252,64,64,0.1)" : div7.style.background = "rgba(0, 192, 252, 0.1)"; 
+            } else if (winner == 4){     
+                (turn == player1) ? div2.style.background = "rgba(252,64,64,0.1)" : div2.style.background = "rgba(0, 192, 252, 0.1)";  
+                (turn == player1) ? div5.style.background = "rgba(252,64,64,0.1)" : div5.style.background = "rgba(0, 192, 252, 0.1)"; 
+                (turn == player1) ? div8.style.background = "rgba(252,64,64,0.1)" : div8.style.background = "rgba(0, 192, 252, 0.1)"; 
+            } else if (winner == 5){    
+                (turn == player1) ? div3.style.background = "rgba(252,64,64,0.1)" : div3.style.background = "rgba(0, 192, 252, 0.1)"; 
+                (turn == player1) ? div6.style.background = "rgba(252,64,64,0.1)" : div6.style.background = "rgba(0, 192, 252, 0.1)"; 
+                (turn == player1) ? div9.style.background = "rgba(252,64,64,0.1)" : div9.style.background = "rgba(0, 192, 252, 0.1)"; 
+            } else if (winner == 6){    
+                (turn == player1) ? div1.style.background = "rgba(252,64,64,0.1)" : div1.style.background = "rgba(0, 192, 252, 0.1)"; 
+                (turn == player1) ? div5.style.background = "rgba(252,64,64,0.1)" : div5.style.background = "rgba(0, 192, 252, 0.1)"; 
+                (turn == player1) ? div9.style.background = "rgba(252,64,64,0.1)" : div9.style.background = "rgba(0, 192, 252, 0.1)"; 
+            } else if (winner == 7){        
+                (turn == player1) ? div3.style.background = "rgba(252,64,64,0.1)" : div3.style.background = "rgba(0, 192, 252, 0.1)"; 
+                (turn == player1) ? div5.style.background = "rgba(252,64,64,0.1)" : div5.style.background = "rgba(0, 192, 252, 0.1)"; 
+                (turn == player1) ? div7.style.background = "rgba(252,64,64,0.1)" : div7.style.background = "rgba(0, 192, 252, 0.1)"; 
+            }
+            
+            
+
+
+            playAgainButton.addEventListener("click", playAgainHandler);
+
+            function playAgainHandler(){
+                boardArray1D =[' ',' ',' ',' ',' ',' ',' ',' ',' '];
+                div1.style.background = "white";
+                div2.style.background = "white";
+                div3.style.background = "white";
+                div4.style.background = "white";
+                div5.style.background = "white";
+                div6.style.background = "white";
+                div7.style.background = "white";
+                div8.style.background = "white";
+                div9.style.background = "white";
+
+                drawBoard(boardArray1D);
+                
+                playAgainButton.style.display = "none";
+                playAgainButton.removeEventListener("click", playAgainHandler);
+                tieImage1.style.display = "none";
+                tieImage2.style.display = "none";  
+
+                for (i=0; i<boarddiv.length; i++){
+                    boarddiv[i].addEventListener('click', putMarkerOnBoard); 
+                }
+
+                if (turn == player2){
+                    won = document.getElementById("caption-right-avatar").innerHTML;
+                    winBanner.style.color = "rgb(252,64,64)";
+                } else {
+                    won = document.getElementById("caption-left-avatar").innerHTML;
+                    winBanner.style.color = "rgb(0, 192, 252)";
+                }
+                winBanner.innerHTML = `${won} starts`; 
+             }
+        } else {     
+            checkEndGame = boardArray1D.findIndex((item) => item ==" ");
+            if (checkEndGame == -1){
+                for (i=0; i<boarddiv.length; i++){
+                    boarddiv[i].removeEventListener('click', putMarkerOnBoard) 
+                }
+                
+                winBanner.style.display = "block";
+                playAgainButton.style.display = "block";
+                
+                winBanner.style.color = "black";
+                winBanner.innerHTML = `It's a tie`; 
+                
+                tieImage1.style.display = "block"; 
+                tieImage2.style.display = "block";                
+
+
+                playAgainButton.addEventListener("click", playAgainHandler2);   
+                
+                
+
+            }
+        }
+
+        function playAgainHandler2(){
+            boardArray1D =[' ',' ',' ',' ',' ',' ',' ',' ',' '];
+            drawBoard(boardArray1D);
+            
+            playAgainButton.style.display = "none";
+            playAgainButton.removeEventListener("click", playAgainHandler);
+            tieImage1.style.display = "none";
+            tieImage2.style.display = "none";  
+
+            for (i=0; i<boarddiv.length; i++){
+                boarddiv[i].addEventListener('click', putMarkerOnBoard); 
+            }
+
+            if (turn == player2){
+                won = document.getElementById("caption-right-avatar").innerHTML;
+                winBanner.style.color = "rgb(252,64,64)";
+            } else {
+                won = document.getElementById("caption-left-avatar").innerHTML;
+                winBanner.style.color = "rgb(0, 192, 252)";
+            }
+            winBanner.innerHTML = `${won} starts`;         
         }    
-        
-        console.log("halkli hallo"); 
+
     };
  
-
-    // const moveAI = function(){
-    //     marker=player2.marker;
-    //     const possibleMove = boardArray1D.findIndex(item => item == ' ')    
-    //     boardArray1D.splice(possibleMove, 1, marker);
-    //     evaluateWinner();
-    //     currentPlayer();
-    // }
-
 
     const drawBoard = function (boardArray1D) {
         let i=0;
         boarddiv.forEach((item) => {
             item.textContent = boardArray1D[i];
+            
+            if (boardArray1D[i] == "x"){
+                item.style.color = "rgb(0, 192, 252)";
+            } else if (boardArray1D[i] == "o"){
+                item.style.color = "rgb(252, 64, 64)";
+            }
+            
             i +=1; 
         });
     }
-    
+
 
     const array1Dto2D = function(boardArray1D){
         const boardArray2D = [];
@@ -176,12 +535,9 @@ const gameboard = (function () {
         return isWinner;
     } 
 
-    const congratulate = function(){
-        alert ("We have a winner");
-    }
 
     for (i=0; i<boarddiv.length; i++){
-        //boarddiv[i].addEventListener('click', function(e){putMarkerOnBoard(e)})
+
         boarddiv[i].addEventListener('click', putMarkerOnBoard)
     }
     
@@ -267,113 +623,22 @@ const gameboard = (function () {
 
 const createPlayer = (function(mark) {
     const marker = mark;
-        
     return {marker};
 });
 
 
-// const controllerAI = (function() {
-
-//     function minimax(turn, board){
-//         if (jjj<20){/* */ 
-//         if (gb.evaluateWinner(player1) >=0) {
-//             console.log('return 10');
-//             return {evaluation : +10};
-
-//         } else if (gb.evaluateWinner(player2) >=0){
-//             console.log('return -10');
-//             return {evaluation : -10};
-//         }
-        
-//         if (board.findIndex((item) => item == ' ')==-1){
-//             console.log('return 0');
-//             return {evaluation : 0};;
-//         }
-            
-//         const possibleMove = [];
-//         for (i=0; i<= 9; i++){
-//             if (board[i] == ' '){
-//                 possibleMove.push(i);
-//             }   
-//         }
-        
-//         console.log(board);
-        
-//         let moves = [];
-    
-//         for (i=0; i<=possibleMove.length; i++){
-//             const id = possibleMove[i];
-             
-//             let backup = board[id];
-//             board[id] = turn.marker;
-    
-//             let move = {}
-//             move.id = id;
-    
-//             if (turn==player1){
-//                 move.evaluation = minimax(player2, board).evaluation;
-//                 jjj=jjj+1;
-//             } else if (turn==player2){
-//                 move.evaluation = minimax(player1, board).evaluation;
-//                 jjj=jjj+1;
-//             }
-    
-          
-//             board[id] = backup;
-//             moves.push(move);
-//             console.log(moves);
-            
-//         } 
-                
-        
-//         /* Minimax Algorithm */ 
-//         let bestmove;
-
-//         if (turn == player1){
-//             /* Maximiser */
-//             let bestEvaluation = -Infinity; 
-//             for (i=0; i<moves.length; i++){
-//                 if (moves[i].evaluation > bestEvaluation){
-//                     bestEvaluation = moves[i].evaluation;
-//                     bestmove = moves[i];
-//                 }
-//             }
-//         } else if (turn == player2){
-//             /* Minimizer */
-//             let bestEvaluation = +Infinity;
-//             for (i=0; i<moves.length; i++){
-//                 if (moves[i].evaluation < bestEvaluation){
-//                     bestEvaluation = moves[i].evaluation;
-//                     bestmove = moves[i];
-//                 }
-//             }
-//         }
-//         // console.log(bestmove);
-        
-//         console.log(bestmove);
-//         jjj=jjj+1;
-//         return bestmove;
-//     }
-//     return {minimax};
-    
-//     }   
-// })();
-
-
-
 
 // Play game
+const startGame = (function(){
+    gb = gameboard;
 
-opponent = "AI";
-gb = gameboard;
+    gb.drawBoard(gb.boardArray1D);
 
-boardArray2 = ['x','o','','','x','o','o','',''];
+    player1 = createPlayer('x');
+    player2 = createPlayer('o');
 
-gb.drawBoard(gb.boardArray1D);
+    turn = player1;
 
-player1 = createPlayer('x');
-player2 = createPlayer('o');
+    return {gb, player1, player2, turn}
 
-turn = player1;
-
-let jjj=0;
+})();
