@@ -18,6 +18,13 @@ body{
 .spl1-container{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+}
+
+.spl1-opponents{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .spl1-message,
@@ -28,6 +35,9 @@ body{
    text-align: center;
    font-size: large;
    align-self: center; 
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+
 }
 
 .spl1-message{
@@ -154,8 +164,6 @@ figcaption{
     font-weight: 600;
     margin: auto;
     text-shadow: 0.3rem 0.3rem 0.2rem rgb(221, 220, 220);
-    
-    
 }
 
 .div-board-1{ grid-area: div1;}
@@ -192,7 +200,7 @@ figcaption{
 
 .button-play-again{
     width: 20rem;
-    font-size: x-large;
+    font-size: large;
     color: "black";
     display: flex;
     justify-content: center;
