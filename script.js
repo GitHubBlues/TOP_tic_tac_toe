@@ -33,195 +33,201 @@ let avatarPlayer1;
 let avatarPlayer2;
 
 
-/* First splash screen */
-function spl1NextHandler(){
-    splSecreen1.style.display = "none";
-    splSecreen2.style.display = "block";
-    
-    spl2Avatar1.addEventListener('click', selectAvatarHandler);
-    spl2Avatar2.addEventListener('click', selectAvatarHandler);
-    spl2Avatar3.addEventListener('click', selectAvatarHandler);
-    spl2Avatar4.addEventListener('click', selectAvatarHandler);
-}    
+const splashScreens = (function(){
 
-function selectAvatarHandler(evt){
-    spl2Avatar1.classList.remove("selected-avatar");
-    spl2Avatar2.classList.remove("selected-avatar");
-    spl2Avatar3.classList.remove("selected-avatar");
-    spl2Avatar4.classList.remove("selected-avatar");
-
-    spl2Avatar1.classList.remove("selected-avatar-red");
-    spl2Avatar2.classList.remove("selected-avatar-red");
-    spl2Avatar3.classList.remove("selected-avatar-red");
-    spl2Avatar4.classList.remove("selected-avatar-red");
-
-    spl2Avatar1.classList.add("non-selected-avatar");
-    spl2Avatar2.classList.add("non-selected-avatar");
-    spl2Avatar3.classList.add("non-selected-avatar");
-    spl2Avatar4.classList.add("non-selected-avatar");
-    
-    console.log(evt.target);
-    if (evt.target.classList.contains("img-girl-1-spl2")){
-        avatarPlayer1= "girl_1";
-
-        spl2Avatar1.classList.remove("non-selected-avatar");
+    const spl1NextHandler = function(){
+        /* First splash screen */
+        splSecreen1.style.display = "none";
+        splSecreen2.style.display = "block";
         
-        if (backup == ""){
-            spl2Avatar1.classList.add("selected-avatar");
-        } else {
-            spl2Avatar1.classList.add("selected-avatar-red");
-        }
-
-    } else if (evt.target.classList.contains("img-boy-2-spl2")){
-        avatarPlayer1= "boy_2";
-
-        spl2Avatar2.classList.remove("non-selected-avatar");
-
-        if (backup == ""){
-            spl2Avatar2.classList.add("selected-avatar");
-        } else {
-            spl2Avatar2.classList.add("selected-avatar-red");
-        }
-
-    } else if (evt.target.classList.contains("img-boy-1-spl2")){
-        avatarPlayer1= "boy_1";
-
-        spl2Avatar3.classList.add("selected-avatar");
-
-        if (backup == ""){
-            spl2Avatar3.classList.add("selected-avatar");
-        } else {
-            spl2Avatar3.classList.add("selected-avatar-red");
-        }
-
-    } else if (evt.target.classList.contains("img-girl-2-spl2")){
-        avatarPlayer1= "girl_2";  
-
-        spl2Avatar4.classList.add("selected-avatar");
-
-        if (backup == ""){
-            spl2Avatar4.classList.add("selected-avatar");
-        } else {
-            spl2Avatar4.classList.add("selected-avatar-red");
-        }
-    } 
-    
-    spl2NextButton.addEventListener('click', spl2NextHandler);
-}
+        spl2Avatar1.addEventListener('click', selectAvatarHandler);
+        spl2Avatar2.addEventListener('click', selectAvatarHandler);
+        spl2Avatar3.addEventListener('click', selectAvatarHandler);
+        spl2Avatar4.addEventListener('click', selectAvatarHandler);
+    }    
 
 
-/* Second splash screen */
-function spl2NextHandler(){
-
-    if (backup == ""){
-
-        namePlayer1 = document.querySelector(".input-box").value;
-        if (namePlayer1 === ""){
-            namePlayer1 = "Player 1"; 
-        }
-        document.querySelector(".input-box").value = "";
-        
-
-        if (opponent == "notAI"){
-        backup = avatarPlayer1;
-        
-        spl2NextButton.removeEventListener('click', spl2NextHandler);
-        
-        spl2Avatar1.src = "images/Avatar_girl_1_red.svg";
-        spl2Avatar2.src = "images/Avatar_boy_2_red.svg";
-        spl2Avatar3.src = "images/Avatar_boy_1_red.svg";
-        spl2Avatar4.src = "images/Avatar_girl_2_red.svg";
-
-        document.querySelector(".choose-avatar-text").innerHTML = "Player 2: Choose your avatar";
-        
-        spl2Avatar1.classList.remove("non-selected-avatar");
-        spl2Avatar2.classList.remove("non-selected-avatar");
-        spl2Avatar3.classList.remove("non-selected-avatar");
-        spl2Avatar4.classList.remove("non-selected-avatar");
+    const selectAvatarHandler = function(evt){
         spl2Avatar1.classList.remove("selected-avatar");
         spl2Avatar2.classList.remove("selected-avatar");
         spl2Avatar3.classList.remove("selected-avatar");
         spl2Avatar4.classList.remove("selected-avatar");
 
-        spl1NextHandler()
+        spl2Avatar1.classList.remove("selected-avatar-red");
+        spl2Avatar2.classList.remove("selected-avatar-red");
+        spl2Avatar3.classList.remove("selected-avatar-red");
+        spl2Avatar4.classList.remove("selected-avatar-red");
 
-        } else if (opponent == "AI"){
-            let namePlayer2 = "Robot";
+        spl2Avatar1.classList.add("non-selected-avatar");
+        spl2Avatar2.classList.add("non-selected-avatar");
+        spl2Avatar3.classList.add("non-selected-avatar");
+        spl2Avatar4.classList.add("non-selected-avatar");
+        
+        console.log(evt.target);
+        if (evt.target.classList.contains("img-girl-1-spl2")){
+            avatarPlayer1= "girl_1";
+
+            spl2Avatar1.classList.remove("non-selected-avatar");
+            
+            if (backup == ""){
+                spl2Avatar1.classList.add("selected-avatar");
+            } else {
+                spl2Avatar1.classList.add("selected-avatar-red");
+            }
+
+        } else if (evt.target.classList.contains("img-boy-2-spl2")){
+            avatarPlayer1= "boy_2";
+
+            spl2Avatar2.classList.remove("non-selected-avatar");
+
+            if (backup == ""){
+                spl2Avatar2.classList.add("selected-avatar");
+            } else {
+                spl2Avatar2.classList.add("selected-avatar-red");
+            }
+
+        } else if (evt.target.classList.contains("img-boy-1-spl2")){
+            avatarPlayer1= "boy_1";
+
+            spl2Avatar3.classList.add("selected-avatar");
+
+            if (backup == ""){
+                spl2Avatar3.classList.add("selected-avatar");
+            } else {
+                spl2Avatar3.classList.add("selected-avatar-red");
+            }
+
+        } else if (evt.target.classList.contains("img-girl-2-spl2")){
+            avatarPlayer1= "girl_2";  
+
+            spl2Avatar4.classList.add("selected-avatar");
+
+            if (backup == ""){
+                spl2Avatar4.classList.add("selected-avatar");
+            } else {
+                spl2Avatar4.classList.add("selected-avatar-red");
+            }
+        } 
+        
+        spl2NextButton.addEventListener('click', spl2NextHandler);
+    }
+
+ 
+    const spl2NextHandler = function(){
+        /* Second splash screen */
+        if (backup == ""){
+
+            namePlayer1 = document.querySelector(".input-box").value;
+            if (namePlayer1 === ""){
+                namePlayer1 = "Player 1"; 
+            }
+            document.querySelector(".input-box").value = "";
+            
+
+            if (opponent == "notAI"){
+                backup = avatarPlayer1;
+                
+                spl2NextButton.removeEventListener('click', spl2NextHandler);
+                
+                spl2Avatar1.src = "images/Avatar_girl_1_red.svg";
+                spl2Avatar2.src = "images/Avatar_boy_2_red.svg";
+                spl2Avatar3.src = "images/Avatar_boy_1_red.svg";
+                spl2Avatar4.src = "images/Avatar_girl_2_red.svg";
+
+                document.querySelector(".choose-avatar-text").innerHTML = "Player 2: Choose your avatar";
+                
+                spl2Avatar1.classList.remove("non-selected-avatar");
+                spl2Avatar2.classList.remove("non-selected-avatar");
+                spl2Avatar3.classList.remove("non-selected-avatar");
+                spl2Avatar4.classList.remove("non-selected-avatar");
+                spl2Avatar1.classList.remove("selected-avatar");
+                spl2Avatar2.classList.remove("selected-avatar");
+                spl2Avatar3.classList.remove("selected-avatar");
+                spl2Avatar4.classList.remove("selected-avatar");
+
+                spl1NextHandler()
+
+            } else if (opponent == "AI"){
+                let namePlayer2 = "Robot";
+                splSecreen2.style.display = "none";
+                mainScreen.style.display = "block"; 
+
+                personalizePlayers(namePlayer1, namePlayer2, avatarPlayer1, "Robot");
+            }
+
+        } else {
+            
+            namePlayer2 = document.querySelector(".input-box").value;
+            if (namePlayer2 === ""){
+                namePlayer2 = "Player 2"; 
+            }
+            
+            document.querySelector(".input-box").value = "";
+
+            avatarPlayer2= avatarPlayer1;
+            avatarPlayer1 = backup;
+        
+            personalizePlayers(namePlayer1, namePlayer2, avatarPlayer1, avatarPlayer2);
+
             splSecreen2.style.display = "none";
             mainScreen.style.display = "block"; 
-
-            personalizePlayers(namePlayer1, namePlayer2, avatarPlayer1, "Robot");
         }
-
-    } else {
-        
-        namePlayer2 = document.querySelector(".input-box").value;
-        if (namePlayer2 === ""){
-            namePlayer2 = "Player 2"; 
-        }
-        
-        document.querySelector(".input-box").value = "";
-
-        avatarPlayer2= avatarPlayer1;
-        avatarPlayer1 = backup;
-       
-        personalizePlayers(namePlayer1, namePlayer2, avatarPlayer1, avatarPlayer2);
-
-        splSecreen2.style.display = "none";
-        mainScreen.style.display = "block"; 
     }
-}
-
-function personalizePlayers(namePlayer1, namePlayer2, avatarPlayer1, avatarPlayer2){
-    
-    if (avatarPlayer1=="girl_1"){
-        document.getElementById("left-avatar").src = "images/Avatar_girl_1_blue.svg";
-    } else if (avatarPlayer1=="girl_2"){
-        document.getElementById("left-avatar").src = "images/Avatar_girl_2_blue.svg";
-    } else if (avatarPlayer1=="boy_1"){
-        document.getElementById("left-avatar").src = "images/Avatar_boy_1_blue.svg"; 
-    } else if (avatarPlayer1=="boy_2"){
-        document.getElementById("left-avatar").src = "images/Avatar_boy_2_blue.svg"; 
-    }   
-
-    if (avatarPlayer2=="girl_1"){
-        document.getElementById("right-avatar").src = "images/Avatar_girl_1_red.svg";
-    } else if (avatarPlayer2=="girl_2"){
-        document.getElementById("right-avatar").src = "images/Avatar_girl_2_red.svg";
-    } else if (avatarPlayer2=="boy_1"){
-        document.getElementById("right-avatar").src = "images/Avatar_boy_1_red.svg"; 
-    } else if (avatarPlayer2=="boy_2"){
-        document.getElementById("right-avatar").src = "images/Avatar_boy_2_red.svg"; 
-    } else {
-        document.getElementById("right-avatar").src = "images/Avatar_robot.svg";  
-    }  
-
-    document.getElementById("caption-left-avatar").innerHTML = namePlayer1;
-    document.getElementById("caption-right-avatar").innerHTML = namePlayer2;
-}
 
 
-function spl1SelectAvatar(evt){
-    if (evt.target.classList == "img-girl-spl1"){
-        opponent = "notAI";
-
-        spl1Figure1.classList.add("selected-avatar");
-        spl1Figure2.classList.remove("selected-avatar");
-        spl1NextButton.addEventListener('click', spl1NextHandler);
-
-    }else if (evt.target.classList == "img-robot-spl1"){
-        opponent = "AI";
+    const personalizePlayers = function(namePlayer1, namePlayer2, avatarPlayer1, avatarPlayer2){
         
-        spl1Figure2.classList.add("selected-avatar");
-        spl1Figure1.classList.remove("selected-avatar");
-        spl1NextButton.addEventListener('click', spl1NextHandler);
+        if (avatarPlayer1=="girl_1"){
+            document.getElementById("left-avatar").src = "images/Avatar_girl_1_blue.svg";
+        } else if (avatarPlayer1=="girl_2"){
+            document.getElementById("left-avatar").src = "images/Avatar_girl_2_blue.svg";
+        } else if (avatarPlayer1=="boy_1"){
+            document.getElementById("left-avatar").src = "images/Avatar_boy_1_blue.svg"; 
+        } else if (avatarPlayer1=="boy_2"){
+            document.getElementById("left-avatar").src = "images/Avatar_boy_2_blue.svg"; 
+        }   
 
-    } 
-} 
+        if (avatarPlayer2=="girl_1"){
+            document.getElementById("right-avatar").src = "images/Avatar_girl_1_red.svg";
+        } else if (avatarPlayer2=="girl_2"){
+            document.getElementById("right-avatar").src = "images/Avatar_girl_2_red.svg";
+        } else if (avatarPlayer2=="boy_1"){
+            document.getElementById("right-avatar").src = "images/Avatar_boy_1_red.svg"; 
+        } else if (avatarPlayer2=="boy_2"){
+            document.getElementById("right-avatar").src = "images/Avatar_boy_2_red.svg"; 
+        } else {
+            document.getElementById("right-avatar").src = "images/Avatar_robot.svg";  
+        }  
+
+        document.getElementById("caption-left-avatar").innerHTML = namePlayer1;
+        document.getElementById("caption-right-avatar").innerHTML = namePlayer2;
+    }
 
 
-spl1Figure1.addEventListener('click', spl1SelectAvatar);
-spl1Figure2.addEventListener('click', spl1SelectAvatar);
+    const spl1SelectAvatar = function(evt){
+        if (evt.target.classList == "img-girl-spl1"){
+            opponent = "notAI";
+
+            spl1Figure1.classList.add("selected-avatar");
+            spl1Figure2.classList.remove("selected-avatar");
+            spl1NextButton.addEventListener('click', spl1NextHandler);
+
+        }else if (evt.target.classList == "img-robot-spl1"){
+            opponent = "AI";
+            
+            spl1Figure2.classList.add("selected-avatar");
+            spl1Figure1.classList.remove("selected-avatar");
+            spl1NextButton.addEventListener('click', spl1NextHandler);
+
+        } 
+    }
+    
+    spl1Figure1.addEventListener('click', spl1SelectAvatar);
+    spl1Figure2.addEventListener('click', spl1SelectAvatar);
+
+    return {spl1NextHandler, spl2NextHandler, spl1SelectAvatar, selectAvatarHandler, personalizePlayers};
+})();
+
 
 
 const gameboard = (function () {
@@ -604,6 +610,6 @@ const startGame = (function(){
 
     turn = player1;
 
-    return {gb, player1, player2, turn}
+    return {gb, player1, player2, turn};
 
 })();

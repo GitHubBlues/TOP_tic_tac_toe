@@ -4,6 +4,7 @@ body{
     padding: 0;
 }
 
+
 /* First splash page*/
 .spl1-title{
    text-align: center;
@@ -37,7 +38,6 @@ body{
    align-self: center; 
    margin-top: 1rem;
    margin-bottom: 1rem;
-
 }
 
 .spl1-message{
@@ -52,7 +52,6 @@ body{
     height: auto; 
 }
 
-
 .non-selected-avatar{
     opacity: 0.40;
     overflow: visible;
@@ -62,7 +61,6 @@ body{
     border: 5px solid rgb(0, 192, 252);
     opacity: 1;
     overflow: visible;
-    
 }
 
 .selected-avatar-red{
@@ -70,8 +68,6 @@ body{
     opacity: 1;
     overflow: visible;
 }
-
-
 
 .figure1-spl1,
 .figure2-spl1{
@@ -86,15 +82,17 @@ figcaption{
 .button-next-1{
     display: flex;
     margin: 1rem auto;
-    font-size: x-large;
-    padding: 0.5rem;
+    font-size: large;
+    padding: 0.2rem;
 }
 
+
+/* Second splash screen*/
 .button-next-2{
     display: block;
     margin: 2rem auto;
-    font-size: x-large;
-    padding: 0.5rem;
+    font-size: large;
+    padding: 0.2rem;
 }
 
 .spl2-avatar-container{
@@ -124,7 +122,6 @@ figcaption{
     height: auto; 
 }
 
-
 .get-name-message{
     margin: 2rem auto 1.5rem auto;
     text-align: center;
@@ -138,6 +135,8 @@ figcaption{
     font-size: x-large;
 }
 
+
+/* Main screen*/
 .div-gameboard{
     display: grid;
     justify-content: center;
@@ -149,14 +148,12 @@ figcaption{
     gap: 0;   
     align-items: stretch;
     justify-items: stretch;
-
-
 }
 
 .div-gameboard > *{
     height: 2.5rem;
     width: 7rem;
-    background-color: "white";
+    background-color: rgb(255,255,255);
     border: 0.2rem solid black;
     text-align: center;
     padding: 0.5rem;
@@ -201,7 +198,6 @@ figcaption{
 .button-play-again{
     width: 20rem;
     font-size: large;
-    color: "black";
     display: flex;
     justify-content: center;
     text-align: center;
@@ -229,7 +225,6 @@ figcaption{
     margin-left: 3rem;
     transform: rotate(2deg);  
 }
-
 
 .winner-area{
     display:flex;
