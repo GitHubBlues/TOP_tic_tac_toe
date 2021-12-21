@@ -15,6 +15,16 @@ const playAgainButton = document.querySelector(".button-play-again");
 const tieImage1 = document.querySelector(".tie-image-1");
 const tieImage2 = document.querySelector(".tie-image-2");
 
+const div1 = document.querySelector(".div-board-1");
+const div2 = document.querySelector(".div-board-2");
+const div3 = document.querySelector(".div-board-3");
+const div4 = document.querySelector(".div-board-4");
+const div5 = document.querySelector(".div-board-5");
+const div6 = document.querySelector(".div-board-6");
+const div7 = document.querySelector(".div-board-7");
+const div8 = document.querySelector(".div-board-8");
+const div9 = document.querySelector(".div-board-9");
+
 let opponent;
 let backup="";
 let namePlayer1;
@@ -226,35 +236,38 @@ const gameboard = (function () {
     const currentPlayer = function(){
         
         if (opponent == 'AI'){
-            if (turn==player2){
-                turn = player1;
+            // if (turn==player2){
+            //     turn = player1;
 
-            } else {
+            // } else {
                   
                 for (i=0; i<boarddiv.length; i++){
                     boarddiv[i].removeEventListener('click', putMarkerOnBoard)
                 }
                 
-                const aiMove =  minimax(player2, boardArray1D,0);
-                console.log(aiMove);
-                
-                setTimeout( () => {
-                for (i=0; i<boarddiv.length; i++){
-                    boarddiv[i].addEventListener('click', putMarkerOnBoard)
-                }}, 1000);
-                
-                turn = player2;  
+                turn = player2; 
+                const aiMove =  minimax(turn, boardArray1D,0);
                 boardArray1D[aiMove.id] = player2.marker;
                 gb.drawBoard(boardArray1D);
-                
-                turn = player1; 
+
 
                 if (evaluateWinner(player2)>=0){
+                    turn = player1; 
                     foundWinner(evaluateWinner(player2));
-                }
+
+                } else {
+                    setTimeout( () => {
+                        for (i=0; i<boarddiv.length; i++){
+                            boarddiv[i].addEventListener('click', putMarkerOnBoard)
+                        }}, 500);
+
+                } 
+                
+                turn = player1; 
+ 
 
                 
-            }
+            // }
 
         } else {
             if (turn == player1){
@@ -270,6 +283,7 @@ const gameboard = (function () {
         turn == player1? marker=player1.marker : marker=player2.marker;
         let winner = -1;
         winBanner.style.display = "none";
+
 
         if (e.target.className == 'div-board-1') {
             if (boardArray1D[0] ==' ') {
@@ -354,38 +368,38 @@ const gameboard = (function () {
                 playAgainButton.style.display = "block";
                 
                 winBanner.style.color = "black";
-                winBanner.innerHTML = `It's a tie`; 
+                winBanner.innerHTML = `It's a tie!`; 
                 
                 tieImage1.style.display = "block"; 
                 tieImage2.style.display = "block";                
 
-                playAgainButton.addEventListener("click", playAgainHandler2);   
+                playAgainButton.addEventListener("click", playAgainHandler);   
 
             }
         }
  
-        function playAgainHandler2(){
-            boardArray1D =[' ',' ',' ',' ',' ',' ',' ',' ',' '];
-            drawBoard(boardArray1D);
+        // function playAgainHandler2(){
+        //     boardArray1D =[' ',' ',' ',' ',' ',' ',' ',' ',' '];
+        //     drawBoard(boardArray1D);
             
-            playAgainButton.style.display = "none";
-            playAgainButton.removeEventListener("click", playAgainHandler2);
-            tieImage1.style.display = "none";
-            tieImage2.style.display = "none";  
+        //     playAgainButton.style.display = "none";
+        //     playAgainButton.removeEventListener("click", playAgainHandler2);
+        //     tieImage1.style.display = "none";
+        //     tieImage2.style.display = "none";  
 
-            for (i=0; i<boarddiv.length; i++){
-                boarddiv[i].addEventListener('click', putMarkerOnBoard); 
-            }
+        //     for (i=0; i<boarddiv.length; i++){
+        //         boarddiv[i].addEventListener('click', putMarkerOnBoard); 
+        //     }
 
-            if (turn == player2){
-                won = document.getElementById("caption-right-avatar").innerHTML;
-                winBanner.style.color = "rgb(252,64,64)";
-            } else {
-                won = document.getElementById("caption-left-avatar").innerHTML;
-                winBanner.style.color = "rgb(0, 192, 252)";
-            }
-            winBanner.innerHTML = `${won} starts`;         
-        }    
+        //     if (turn == player2){
+        //         won = document.getElementById("caption-right-avatar").innerHTML;
+        //         winBanner.style.color = "rgb(252,64,64)";
+        //     } else {
+        //         won = document.getElementById("caption-left-avatar").innerHTML;
+        //         winBanner.style.color = "rgb(0, 192, 252)";
+        //     }
+        //     winBanner.innerHTML = `${won} starts`;         
+        // }    
 
     };
  
@@ -409,16 +423,6 @@ const gameboard = (function () {
             boarddiv[i].removeEventListener('click', putMarkerOnBoard) 
         }
         
-        const div1 = document.querySelector(".div-board-1");
-        const div2 = document.querySelector(".div-board-2");
-        const div3 = document.querySelector(".div-board-3");
-        const div4 = document.querySelector(".div-board-4");
-        const div5 = document.querySelector(".div-board-5");
-        const div6 = document.querySelector(".div-board-6");
-        const div7 = document.querySelector(".div-board-7");
-        const div8 = document.querySelector(".div-board-8");
-        const div9 = document.querySelector(".div-board-9");
-
         if (winner == 0){
             (turn == player1) ? div1.style.background = "rgba(252,64,64,0.1)" : div1.style.background = "rgba(0, 192, 252, 0.1)"; 
             (turn == player1) ? div2.style.background = "rgba(252,64,64,0.1)" : div2.style.background = "rgba(0, 192, 252, 0.1)"; 
@@ -456,40 +460,73 @@ const gameboard = (function () {
 
         playAgainButton.addEventListener("click", playAgainHandler);
 
-        function playAgainHandler(){
-            boardArray1D =[' ',' ',' ',' ',' ',' ',' ',' ',' '];
-            div1.style.background = "white";
-            div2.style.background = "white";
-            div3.style.background = "white";
-            div4.style.background = "white";
-            div5.style.background = "white";
-            div6.style.background = "white";
-            div7.style.background = "white";
-            div8.style.background = "white";
-            div9.style.background = "white";
+        // function playAgainHandler(){
+        //     boardArray1D =[' ',' ',' ',' ',' ',' ',' ',' ',' '];
+        //     div1.style.background = "white";
+        //     div2.style.background = "white";
+        //     div3.style.background = "white";
+        //     div4.style.background = "white";
+        //     div5.style.background = "white";
+        //     div6.style.background = "white";
+        //     div7.style.background = "white";
+        //     div8.style.background = "white";
+        //     div9.style.background = "white";
 
-            drawBoard(boardArray1D);
+        //     drawBoard(boardArray1D);
             
-            playAgainButton.style.display = "none";
-            playAgainButton.removeEventListener("click", playAgainHandler);
-            tieImage1.style.display = "none";
-            tieImage2.style.display = "none";  
+        //     playAgainButton.style.display = "none";
+        //     playAgainButton.removeEventListener("click", playAgainHandler);
+        //     tieImage1.style.display = "none";
+        //     tieImage2.style.display = "none";  
 
-            for (i=0; i<boarddiv.length; i++){
-                boarddiv[i].addEventListener('click', putMarkerOnBoard); 
-            }
+        //     for (i=0; i<boarddiv.length; i++){
+        //         boarddiv[i].addEventListener('click', putMarkerOnBoard); 
+        //     }
 
-            if (turn == player2){
-                won = document.getElementById("caption-right-avatar").innerHTML;
-                winBanner.style.color = "rgb(252,64,64)";
-            } else {
-                won = document.getElementById("caption-left-avatar").innerHTML;
-                winBanner.style.color = "rgb(0, 192, 252)";
-            }
-            winBanner.innerHTML = `${won} starts`; 
-            }
+        //     if (turn == player2){
+        //         won = document.getElementById("caption-right-avatar").innerHTML;
+        //         winBanner.style.color = "rgb(252,64,64)";
+        //     } else {
+        //         won = document.getElementById("caption-left-avatar").innerHTML;
+        //         winBanner.style.color = "rgb(0, 192, 252)";
+        //     }
+        //     winBanner.innerHTML = `${won} starts`; 
+        // }
     }
 
+
+    const playAgainHandler = function(){
+        boardArray1D =[' ',' ',' ',' ',' ',' ',' ',' ',' '];
+        div1.style.background = "white";
+        div2.style.background = "white";
+        div3.style.background = "white";
+        div4.style.background = "white";
+        div5.style.background = "white";
+        div6.style.background = "white";
+        div7.style.background = "white";
+        div8.style.background = "white";
+        div9.style.background = "white";
+
+        drawBoard(boardArray1D);
+        
+        playAgainButton.style.display = "none";
+        playAgainButton.removeEventListener("click", playAgainHandler);
+        tieImage1.style.display = "none";
+        tieImage2.style.display = "none";  
+
+        for (i=0; i<boarddiv.length; i++){
+            boarddiv[i].addEventListener('click', putMarkerOnBoard); 
+        }
+
+        if (turn == player2){
+            won = document.getElementById("caption-right-avatar").innerHTML;
+            winBanner.style.color = "rgb(252,64,64)";
+        } else {
+            won = document.getElementById("caption-left-avatar").innerHTML;
+            winBanner.style.color = "rgb(0, 192, 252)";
+        }
+        winBanner.innerHTML = `${won} starts`; 
+    }
 
 
     const drawBoard = function (boardArray1D) {
@@ -524,8 +561,7 @@ const gameboard = (function () {
         for (i=0; i<9; i++){
             boardArray1D[i] == marker? boardArrayInteger[i]=1 : boardArrayInteger[i]=0;
         }
-        
-                
+                        
         let Array2D = array1Dto2D(boardArrayInteger);
              
         const row1 = Array2D[0][0] + Array2D[0][1] + Array2D[0][2];
@@ -544,12 +580,7 @@ const gameboard = (function () {
         return isWinner;
     } 
 
-
-    for (i=0; i<boarddiv.length; i++){
-
-        boarddiv[i].addEventListener('click', putMarkerOnBoard)
-    }
-    
+   
     function minimax(turn, boardArray1D, depth){
     
         if (gb.evaluateWinner(player2) >=0) {
@@ -591,12 +622,9 @@ const gameboard = (function () {
             } else if (turn==player2){
                 move.evaluation = minimax(player1, boardArray1D, depth+1).evaluation;
             }
-    
-          
             boardArray1D[id] = backup;
             moves.push(move);
         } 
-                
         
         /* Minimax Algorithm */ 
         let bestmove;
@@ -620,12 +648,16 @@ const gameboard = (function () {
                 }
             }
         }
-
         return bestmove;
-        //return {minimax};
     }  
 
-    return {boardArray1D, array1Dto2D, drawBoard, evaluateWinner, minimax, foundWinner};    
+
+    for (i=0; i<boarddiv.length; i++){
+        boarddiv[i].addEventListener('click', putMarkerOnBoard)
+    }
+
+
+    return {boardArray1D, array1Dto2D, drawBoard, evaluateWinner, minimax, foundWinner, playAgainHandler};    
 
 })();
 
@@ -634,7 +666,6 @@ const createPlayer = (function(mark) {
     const marker = mark;
     return {marker};
 });
-
 
 
 // Play game

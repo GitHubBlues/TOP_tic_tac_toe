@@ -8,10 +8,11 @@ body{
 .spl1-title{
    text-align: center;
    background-color: rgb(240, 240, 240);
-   padding: 2.5rem;
-   margin: 0rem 0rem 1.2rem 0rem;
+   padding: 2rem;
+   margin: 0rem 0rem 0rem 0rem;
    font-weight: 900; 
    font-size: 250%;
+   font-family: 'Fuzzy Bubbles', cursive;
 }
 
 .spl1-container{
@@ -37,7 +38,7 @@ body{
 .img-robot-spl1{
     margin: 0rem auto;  
     overflow: visible;
-    width: 12rem;
+    width: 10rem;
     height: auto; 
 }
 
@@ -74,7 +75,7 @@ figcaption{
 
 .button-next-1{
     display: flex;
-    margin: 2rem auto;
+    margin: 1rem auto;
     font-size: x-large;
     padding: 0.5rem;
 }
@@ -95,6 +96,7 @@ figcaption{
     display: flex;
     justify-content: center;
     font-size: x-large;
+    margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -108,13 +110,13 @@ figcaption{
     display: flex;
     justify-content: center;  
     overflow: visible; 
-    width: 12rem;
+    width: 10rem;
     height: auto; 
 }
 
 
 .get-name-message{
-    margin: 2.5rem auto 1.5rem auto;
+    margin: 2rem auto 1.5rem auto;
     text-align: center;
     font-size: x-large;
 }
@@ -142,8 +144,8 @@ figcaption{
 }
 
 .div-gameboard > *{
-    height: 3rem;
-    width: 8rem;
+    height: 2.5rem;
+    width: 7rem;
     background-color: "white";
     border: 0.2rem solid black;
     text-align: center;
@@ -156,11 +158,7 @@ figcaption{
     
 }
 
-.div-board-1{ 
-    grid-area: div1;
-    text-shadow: 0.3rem 0.3rem 0.2rem lightgrey;
-    
-}
+.div-board-1{ grid-area: div1;}
 .div-board-2{ grid-area: div2}
 .div-board-3{ grid-area: div3}
 .div-board-4{ grid-area: div4}
@@ -176,13 +174,19 @@ figcaption{
 
 }
 
+#left-avatar,
+#right-avatar{
+    width: 10rem;
+    height: auto;   
+}
+
 .announce-winner{
     font-family: 'Fuzzy Bubbles', cursive;
-    font-size: 4rem;
+    font-size: 3rem;
     color:rgb(252, 64,64);
     transform: rotate(355deg);
     display: flex;
-    margin-top: -3rem;
+    margin-top: -1.5rem;
     text-align: center;
 }
 
@@ -195,25 +199,25 @@ figcaption{
     text-align: center;
     border: 2px solid black;
     padding: 0.2rem;
-    margin: 3rem auto;
+    margin: 2rem auto;
     background:lightgrey;
 }
 
 .tie-image-1,
 .tie-image-2{
     display: flex;
-    width: 4rem;
+    width: 3rem;
     height: auto;
 }
 
 .tie-image-1{
-    margin-top: -4rem;
-    margin-right: 3rem;
-    transform: rotate(356deg);  
+    margin-top: -1.2rem;
+    margin-right: 2rem;
+    transform: rotate(354deg);  
     }
 
 .tie-image-2{
-    margin-top: -3rem;
+    margin-top: -1.6rem;
     margin-left: 3rem;
     transform: rotate(2deg);  
 }
