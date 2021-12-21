@@ -198,9 +198,8 @@ function personalizePlayers(namePlayer1, namePlayer2, avatarPlayer1, avatarPlaye
 
     document.getElementById("caption-left-avatar").innerHTML = namePlayer1;
     document.getElementById("caption-right-avatar").innerHTML = namePlayer2;
-
-
 }
+
 
 function spl1SelectAvatar(evt){
     if (evt.target.classList == "img-girl-spl1"){
@@ -220,54 +219,42 @@ function spl1SelectAvatar(evt){
     } 
 } 
 
+
 spl1Figure1.addEventListener('click', spl1SelectAvatar);
 spl1Figure2.addEventListener('click', spl1SelectAvatar);
 
 
-
-
 const gameboard = (function () {
     const boarddiv = document.querySelectorAll(".div-gameboard > *");
-    
-
+ 
     let boardArray1D = [' ',' ',' ',' ',' ',' ',' ',' ',' '];
-
 
     const currentPlayer = function(){
         
         if (opponent == 'AI'){
-            // if (turn==player2){
-            //     turn = player1;
-
-            // } else {
                   
-                for (i=0; i<boarddiv.length; i++){
-                    boarddiv[i].removeEventListener('click', putMarkerOnBoard)
-                }
-                
-                turn = player2; 
-                const aiMove =  minimax(turn, boardArray1D,0);
-                boardArray1D[aiMove.id] = player2.marker;
-                gb.drawBoard(boardArray1D);
+            for (i=0; i<boarddiv.length; i++){
+                boarddiv[i].removeEventListener('click', putMarkerOnBoard)
+            }
+            
+            turn = player2; 
+            const aiMove =  minimax(turn, boardArray1D,0);
+            boardArray1D[aiMove.id] = player2.marker;
+            gb.drawBoard(boardArray1D);
 
 
-                if (evaluateWinner(player2)>=0){
-                    turn = player1; 
-                    foundWinner(evaluateWinner(player2));
-
-                } else {
-                    setTimeout( () => {
-                        for (i=0; i<boarddiv.length; i++){
-                            boarddiv[i].addEventListener('click', putMarkerOnBoard)
-                        }}, 500);
-
-                } 
-                
+            if (evaluateWinner(player2)>=0){
                 turn = player1; 
- 
+                foundWinner(evaluateWinner(player2));
 
-                
-            // }
+            } else {
+                setTimeout( () => {
+                    for (i=0; i<boarddiv.length; i++){
+                        boarddiv[i].addEventListener('click', putMarkerOnBoard)
+                    }}, 500);
+
+            } 
+            turn = player1; 
 
         } else {
             if (turn == player1){
@@ -378,29 +365,6 @@ const gameboard = (function () {
             }
         }
  
-        // function playAgainHandler2(){
-        //     boardArray1D =[' ',' ',' ',' ',' ',' ',' ',' ',' '];
-        //     drawBoard(boardArray1D);
-            
-        //     playAgainButton.style.display = "none";
-        //     playAgainButton.removeEventListener("click", playAgainHandler2);
-        //     tieImage1.style.display = "none";
-        //     tieImage2.style.display = "none";  
-
-        //     for (i=0; i<boarddiv.length; i++){
-        //         boarddiv[i].addEventListener('click', putMarkerOnBoard); 
-        //     }
-
-        //     if (turn == player2){
-        //         won = document.getElementById("caption-right-avatar").innerHTML;
-        //         winBanner.style.color = "rgb(252,64,64)";
-        //     } else {
-        //         won = document.getElementById("caption-left-avatar").innerHTML;
-        //         winBanner.style.color = "rgb(0, 192, 252)";
-        //     }
-        //     winBanner.innerHTML = `${won} starts`;         
-        // }    
-
     };
  
 
@@ -459,39 +423,6 @@ const gameboard = (function () {
         
 
         playAgainButton.addEventListener("click", playAgainHandler);
-
-        // function playAgainHandler(){
-        //     boardArray1D =[' ',' ',' ',' ',' ',' ',' ',' ',' '];
-        //     div1.style.background = "white";
-        //     div2.style.background = "white";
-        //     div3.style.background = "white";
-        //     div4.style.background = "white";
-        //     div5.style.background = "white";
-        //     div6.style.background = "white";
-        //     div7.style.background = "white";
-        //     div8.style.background = "white";
-        //     div9.style.background = "white";
-
-        //     drawBoard(boardArray1D);
-            
-        //     playAgainButton.style.display = "none";
-        //     playAgainButton.removeEventListener("click", playAgainHandler);
-        //     tieImage1.style.display = "none";
-        //     tieImage2.style.display = "none";  
-
-        //     for (i=0; i<boarddiv.length; i++){
-        //         boarddiv[i].addEventListener('click', putMarkerOnBoard); 
-        //     }
-
-        //     if (turn == player2){
-        //         won = document.getElementById("caption-right-avatar").innerHTML;
-        //         winBanner.style.color = "rgb(252,64,64)";
-        //     } else {
-        //         won = document.getElementById("caption-left-avatar").innerHTML;
-        //         winBanner.style.color = "rgb(0, 192, 252)";
-        //     }
-        //     winBanner.innerHTML = `${won} starts`; 
-        // }
     }
 
 
@@ -584,16 +515,13 @@ const gameboard = (function () {
     function minimax(turn, boardArray1D, depth){
     
         if (gb.evaluateWinner(player2) >=0) {
-            //console.log("eval 10");
             return {evaluation : +10};
 
         } else if (gb.evaluateWinner(player1) >=0){
-            //console.log("eval -10");
             return {evaluation : -10};
         }
         
         if (boardArray1D.findIndex((item) => item == ' ')==-1){
-            //console.log("eval 0");
             return {evaluation : 0};
         }
             
@@ -608,11 +536,8 @@ const gameboard = (function () {
     
         for (let i=0; i<possibleMove.length; i++){
             let id = possibleMove[i];
-            // console.log(id);
             let backup = boardArray1D[id];
             boardArray1D[id] = turn.marker;
-            // console.log('88888877');
-            // console.log(boardarray);
 
             let move = {}
             move.id = id;
