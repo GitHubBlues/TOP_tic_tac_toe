@@ -248,6 +248,12 @@ const gameboard = (function () {
                 gb.drawBoard(boardArray1D);
                 
                 turn = player1; 
+
+                if (evaluateWinner(player2)>=0){
+                    foundWinner(evaluateWinner(player2));
+                }
+
+                
             }
 
         } else {
@@ -334,106 +340,10 @@ const gameboard = (function () {
 
         if (winner >= 0){ 
 
-            winBanner.style.display = "block";
-            playAgainButton.style.display = "block";
-            
+            foundWinner(winner);
 
-            if (turn == player1){
-                won = document.getElementById("caption-right-avatar").innerHTML;
-                winBanner.style.color = "rgb(252,64,64)";
-            } else {
-                won = document.getElementById("caption-left-avatar").innerHTML;
-                winBanner.style.color = "rgb(0, 192, 252)";
-            }
-            winBanner.innerHTML = `There's a winner! <br> ${won} won`; 
-
-
-            for (i=0; i<boarddiv.length; i++){
-                boarddiv[i].removeEventListener('click', putMarkerOnBoard) 
-            }
-            
-            const div1 = document.querySelector(".div-board-1");
-            const div2 = document.querySelector(".div-board-2");
-            const div3 = document.querySelector(".div-board-3");
-            const div4 = document.querySelector(".div-board-4");
-            const div5 = document.querySelector(".div-board-5");
-            const div6 = document.querySelector(".div-board-6");
-            const div7 = document.querySelector(".div-board-7");
-            const div8 = document.querySelector(".div-board-8");
-            const div9 = document.querySelector(".div-board-9");
-
-            if (winner == 0){
-               (turn == player1) ? div1.style.background = "rgba(252,64,64,0.1)" : div1.style.background = "rgba(0, 192, 252, 0.1)"; 
-               (turn == player1) ? div2.style.background = "rgba(252,64,64,0.1)" : div2.style.background = "rgba(0, 192, 252, 0.1)"; 
-               (turn == player1) ? div3.style.background = "rgba(252,64,64,0.1)" : div3.style.background = "rgba(0, 192, 252, 0.1)"; 
-            } else if (winner == 1){
-                (turn == player1) ? div4.style.background = "rgba(252,64,64,0.1)" : div4.style.background = "rgba(0, 192, 252, 0.1)"; 
-                (turn == player1) ? div5.style.background = "rgba(252,64,64,0.1)" : div5.style.background = "rgba(0, 192, 252, 0.1)"; 
-                (turn == player1) ? div6.style.background = "rgba(252,64,64,0.1)" : div6.style.background = "rgba(0, 192, 252, 0.1)"; 
-            } else if (winner == 2){    
-                (turn == player1) ? div7.style.background = "rgba(252,64,64,0.1)" : div7.style.background = "rgba(0, 192, 252, 0.1)"; 
-                (turn == player1) ? div8.style.background = "rgba(252,64,64,0.1)" : div8.style.background = "rgba(0, 192, 252, 0.1)"; 
-                (turn == player1) ? div9.style.background = "rgba(252,64,64,0.1)" : div9.style.background = "rgba(0, 192, 252, 0.1)"; 
-            } else if (winner == 3){        
-                (turn == player1) ? div1.style.background = "rgba(252,64,64,0.1)" : div1.style.background = "rgba(0, 192, 252, 0.1)"; 
-                (turn == player1) ? div4.style.background = "rgba(252,64,64,0.1)" : div4.style.background = "rgba(0, 192, 252, 0.1)"; 
-                (turn == player1) ? div7.style.background = "rgba(252,64,64,0.1)" : div7.style.background = "rgba(0, 192, 252, 0.1)"; 
-            } else if (winner == 4){     
-                (turn == player1) ? div2.style.background = "rgba(252,64,64,0.1)" : div2.style.background = "rgba(0, 192, 252, 0.1)";  
-                (turn == player1) ? div5.style.background = "rgba(252,64,64,0.1)" : div5.style.background = "rgba(0, 192, 252, 0.1)"; 
-                (turn == player1) ? div8.style.background = "rgba(252,64,64,0.1)" : div8.style.background = "rgba(0, 192, 252, 0.1)"; 
-            } else if (winner == 5){    
-                (turn == player1) ? div3.style.background = "rgba(252,64,64,0.1)" : div3.style.background = "rgba(0, 192, 252, 0.1)"; 
-                (turn == player1) ? div6.style.background = "rgba(252,64,64,0.1)" : div6.style.background = "rgba(0, 192, 252, 0.1)"; 
-                (turn == player1) ? div9.style.background = "rgba(252,64,64,0.1)" : div9.style.background = "rgba(0, 192, 252, 0.1)"; 
-            } else if (winner == 6){    
-                (turn == player1) ? div1.style.background = "rgba(252,64,64,0.1)" : div1.style.background = "rgba(0, 192, 252, 0.1)"; 
-                (turn == player1) ? div5.style.background = "rgba(252,64,64,0.1)" : div5.style.background = "rgba(0, 192, 252, 0.1)"; 
-                (turn == player1) ? div9.style.background = "rgba(252,64,64,0.1)" : div9.style.background = "rgba(0, 192, 252, 0.1)"; 
-            } else if (winner == 7){        
-                (turn == player1) ? div3.style.background = "rgba(252,64,64,0.1)" : div3.style.background = "rgba(0, 192, 252, 0.1)"; 
-                (turn == player1) ? div5.style.background = "rgba(252,64,64,0.1)" : div5.style.background = "rgba(0, 192, 252, 0.1)"; 
-                (turn == player1) ? div7.style.background = "rgba(252,64,64,0.1)" : div7.style.background = "rgba(0, 192, 252, 0.1)"; 
-            }
-            
-            
-
-
-            playAgainButton.addEventListener("click", playAgainHandler);
-
-            function playAgainHandler(){
-                boardArray1D =[' ',' ',' ',' ',' ',' ',' ',' ',' '];
-                div1.style.background = "white";
-                div2.style.background = "white";
-                div3.style.background = "white";
-                div4.style.background = "white";
-                div5.style.background = "white";
-                div6.style.background = "white";
-                div7.style.background = "white";
-                div8.style.background = "white";
-                div9.style.background = "white";
-
-                drawBoard(boardArray1D);
-                
-                playAgainButton.style.display = "none";
-                playAgainButton.removeEventListener("click", playAgainHandler);
-                tieImage1.style.display = "none";
-                tieImage2.style.display = "none";  
-
-                for (i=0; i<boarddiv.length; i++){
-                    boarddiv[i].addEventListener('click', putMarkerOnBoard); 
-                }
-
-                if (turn == player2){
-                    won = document.getElementById("caption-right-avatar").innerHTML;
-                    winBanner.style.color = "rgb(252,64,64)";
-                } else {
-                    won = document.getElementById("caption-left-avatar").innerHTML;
-                    winBanner.style.color = "rgb(0, 192, 252)";
-                }
-                winBanner.innerHTML = `${won} starts`; 
-             }
-        } else {     
+        } else { 
+  
             checkEndGame = boardArray1D.findIndex((item) => item ==" ");
             if (checkEndGame == -1){
                 for (i=0; i<boarddiv.length; i++){
@@ -449,20 +359,17 @@ const gameboard = (function () {
                 tieImage1.style.display = "block"; 
                 tieImage2.style.display = "block";                
 
-
                 playAgainButton.addEventListener("click", playAgainHandler2);   
-                
-                
 
             }
         }
-
+ 
         function playAgainHandler2(){
             boardArray1D =[' ',' ',' ',' ',' ',' ',' ',' ',' '];
             drawBoard(boardArray1D);
             
             playAgainButton.style.display = "none";
-            playAgainButton.removeEventListener("click", playAgainHandler);
+            playAgainButton.removeEventListener("click", playAgainHandler2);
             tieImage1.style.display = "none";
             tieImage2.style.display = "none";  
 
@@ -482,6 +389,108 @@ const gameboard = (function () {
 
     };
  
+
+    const foundWinner = function(winner){            
+        winBanner.style.display = "block";
+        playAgainButton.style.display = "block";
+        
+
+        if (turn == player1){
+            won = document.getElementById("caption-right-avatar").innerHTML;
+            winBanner.style.color = "rgb(252,64,64)";
+        } else {
+            won = document.getElementById("caption-left-avatar").innerHTML;
+            winBanner.style.color = "rgb(0, 192, 252)";
+        }
+        winBanner.innerHTML = `There's a winner! <br> ${won} won`; 
+
+
+        for (i=0; i<boarddiv.length; i++){
+            boarddiv[i].removeEventListener('click', putMarkerOnBoard) 
+        }
+        
+        const div1 = document.querySelector(".div-board-1");
+        const div2 = document.querySelector(".div-board-2");
+        const div3 = document.querySelector(".div-board-3");
+        const div4 = document.querySelector(".div-board-4");
+        const div5 = document.querySelector(".div-board-5");
+        const div6 = document.querySelector(".div-board-6");
+        const div7 = document.querySelector(".div-board-7");
+        const div8 = document.querySelector(".div-board-8");
+        const div9 = document.querySelector(".div-board-9");
+
+        if (winner == 0){
+            (turn == player1) ? div1.style.background = "rgba(252,64,64,0.1)" : div1.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div2.style.background = "rgba(252,64,64,0.1)" : div2.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div3.style.background = "rgba(252,64,64,0.1)" : div3.style.background = "rgba(0, 192, 252, 0.1)"; 
+        } else if (winner == 1){
+            (turn == player1) ? div4.style.background = "rgba(252,64,64,0.1)" : div4.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div5.style.background = "rgba(252,64,64,0.1)" : div5.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div6.style.background = "rgba(252,64,64,0.1)" : div6.style.background = "rgba(0, 192, 252, 0.1)"; 
+        } else if (winner == 2){    
+            (turn == player1) ? div7.style.background = "rgba(252,64,64,0.1)" : div7.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div8.style.background = "rgba(252,64,64,0.1)" : div8.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div9.style.background = "rgba(252,64,64,0.1)" : div9.style.background = "rgba(0, 192, 252, 0.1)"; 
+        } else if (winner == 3){        
+            (turn == player1) ? div1.style.background = "rgba(252,64,64,0.1)" : div1.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div4.style.background = "rgba(252,64,64,0.1)" : div4.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div7.style.background = "rgba(252,64,64,0.1)" : div7.style.background = "rgba(0, 192, 252, 0.1)"; 
+        } else if (winner == 4){     
+            (turn == player1) ? div2.style.background = "rgba(252,64,64,0.1)" : div2.style.background = "rgba(0, 192, 252, 0.1)";  
+            (turn == player1) ? div5.style.background = "rgba(252,64,64,0.1)" : div5.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div8.style.background = "rgba(252,64,64,0.1)" : div8.style.background = "rgba(0, 192, 252, 0.1)"; 
+        } else if (winner == 5){    
+            (turn == player1) ? div3.style.background = "rgba(252,64,64,0.1)" : div3.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div6.style.background = "rgba(252,64,64,0.1)" : div6.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div9.style.background = "rgba(252,64,64,0.1)" : div9.style.background = "rgba(0, 192, 252, 0.1)"; 
+        } else if (winner == 6){    
+            (turn == player1) ? div1.style.background = "rgba(252,64,64,0.1)" : div1.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div5.style.background = "rgba(252,64,64,0.1)" : div5.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div9.style.background = "rgba(252,64,64,0.1)" : div9.style.background = "rgba(0, 192, 252, 0.1)"; 
+        } else if (winner == 7){        
+            (turn == player1) ? div3.style.background = "rgba(252,64,64,0.1)" : div3.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div5.style.background = "rgba(252,64,64,0.1)" : div5.style.background = "rgba(0, 192, 252, 0.1)"; 
+            (turn == player1) ? div7.style.background = "rgba(252,64,64,0.1)" : div7.style.background = "rgba(0, 192, 252, 0.1)"; 
+        }
+        
+
+        playAgainButton.addEventListener("click", playAgainHandler);
+
+        function playAgainHandler(){
+            boardArray1D =[' ',' ',' ',' ',' ',' ',' ',' ',' '];
+            div1.style.background = "white";
+            div2.style.background = "white";
+            div3.style.background = "white";
+            div4.style.background = "white";
+            div5.style.background = "white";
+            div6.style.background = "white";
+            div7.style.background = "white";
+            div8.style.background = "white";
+            div9.style.background = "white";
+
+            drawBoard(boardArray1D);
+            
+            playAgainButton.style.display = "none";
+            playAgainButton.removeEventListener("click", playAgainHandler);
+            tieImage1.style.display = "none";
+            tieImage2.style.display = "none";  
+
+            for (i=0; i<boarddiv.length; i++){
+                boarddiv[i].addEventListener('click', putMarkerOnBoard); 
+            }
+
+            if (turn == player2){
+                won = document.getElementById("caption-right-avatar").innerHTML;
+                winBanner.style.color = "rgb(252,64,64)";
+            } else {
+                won = document.getElementById("caption-left-avatar").innerHTML;
+                winBanner.style.color = "rgb(0, 192, 252)";
+            }
+            winBanner.innerHTML = `${won} starts`; 
+            }
+    }
+
+
 
     const drawBoard = function (boardArray1D) {
         let i=0;
@@ -616,7 +625,7 @@ const gameboard = (function () {
         //return {minimax};
     }  
 
-    return {boardArray1D, array1Dto2D, drawBoard, evaluateWinner, minimax};    
+    return {boardArray1D, array1Dto2D, drawBoard, evaluateWinner, minimax, foundWinner};    
 
 })();
 
